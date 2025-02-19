@@ -4,25 +4,6 @@ const ExcelJS = require('exceljs');
 const fs = require('fs');
 const path = require('path');
 
-// 初始化云环境
-cloud.init({
-  env: 'weichuang-9gfoj56n60440bfb', // 替换为实际的环境ID
-  secretId: 'AKIDa7brsfEmAKFwPddPwEJemkTyEG3dz6yc', // 替换为腾讯云的SecretId
-  secretKey: 'UkmbBXlmZ8SdoowufCVaS6WjiaEeplEX', // 替换为腾讯云的SecretKey
-});
-
-// 创建 MySQL 连接池
-const pool = mysql.createPool({
-  host: 'sh-cynosdbmysql-grp-elcfulx2.sql.tencentcdb.com', // MySQL 主机地址
-  user: 'root',  // 数据库用户名
-  password: '96Cjkx5A',  // 数据库密码
-  database: 'qitihuansuan',  // 数据库名称
-  port: 21738,  // 数据库端口
-  waitForConnections: true,  // 等待连接
-  connectionLimit: 10,  // 连接池最大连接数
-  queueLimit: 0, // 队列长度
-  connectTimeout: 10000  // 设置超时时间为 10秒
-});
 
 // 封装带有重试机制的数据库查询函数
 async function queryWithRetry(sql, values = [], retries = 3) {
