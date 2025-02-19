@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@cloudbase/node-sdk": "^3.4.0",
+    "exceljs": "^4.4.0",
+    "mysql2": "^2.3.3",
+    "wx-server-sdk": "^3.0.1"
+  }
+}

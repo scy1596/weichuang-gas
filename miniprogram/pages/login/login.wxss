@@ -1,0 +1,134 @@
+/* 整体容器样式 */
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* 占满整个视口高度 */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 渐变背景 */
+}
+
+/* logo 和标题区域样式 */
+.logo-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -60px; /* 让 logo 和标题整体位置更高，可按需调整 */
+  margin-bottom: 30px; /* 与登录框保持一定距离 */
+}
+
+/* logo 样式 */
+.logo {
+  width: 120px; /* 增大 logo 尺寸 */
+  height: 120px;
+  border-radius: 50%; /* 圆形 logo */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* 添加白色阴影，增强视觉效果 */
+  overflow: hidden; /* 确保图片在圆形内 */
+  border: 3px solid rgba(255, 255, 255, 0.8); /* 添加白色边框 */
+  transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+
+.logo image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保证图片填充整个区域 */
+}
+
+.logo:hover {
+  transform: scale(1.1); /* 鼠标悬停时 logo 放大 */
+}
+
+/* 标题文字样式 */
+.title {
+  font-size: 28px; /* 增大标题字体大小 */
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+  letter-spacing: 3px; /* 增加字母间距 */
+  margin-top: 15px; /* 与 logo 保持一定距离 */
+}
+
+/* 登录框样式 */
+.login-box {
+  width: 100%;
+  max-width: 350px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
+  border-radius: 15px; /* 更大的圆角 */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* 更明显的阴影 */
+  animation: fadeIn 0.5s ease-out; /* 淡入动画 */
+  position: relative;
+}
+
+/* 在登录框上方添加一个简单的装饰线条示例 */
+.login-box::before {
+  content: "";
+  width: 80%;
+  height: 2px;
+  background-color: #ccc;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 输入框样式 */
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: none;
+  border-bottom: 2px solid #ccc; /* 底部边框 */
+  background-color: #f5f5f5; /* 输入框背景色微调 */
+  border-radius: 8px; /* 输入框添加圆角 */
+  font-size: 16px;
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* 边框颜色和背景颜色过渡效果 */
+}
+
+input:focus {
+  outline: none;
+  border-color: #667eea; /* 聚焦时的边框颜色 */
+  background-color: #fff; /* 聚焦时的背景颜色 */
+}
+
+/* 按钮样式 */
+.login-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #667eea; /* 按钮背景颜色 */
+  color: #fff;
+  border: none;
+  border-radius: 8px; /* 更大的圆角 */
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 添加阴影效果 */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* 背景颜色、缩放和阴影过渡效果 */
+}
+
+.login-button:hover {
+  background-color: #536dfe; /* 悬停时的背景颜色 */
+  transform: scale(1.02); /* 悬停时稍微放大 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* 悬停时阴影更明显 */
+}
+
+.login-button:disabled {
+  background-color: #ccc; /* 禁用时的背景颜色 */
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

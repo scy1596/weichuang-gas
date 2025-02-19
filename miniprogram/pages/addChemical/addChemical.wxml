@@ -1,0 +1,27 @@
+<!--pages/addChemical/addChemical.wxml-->
+<view class="container">
+  <view class="add-form">
+    <input class="input" placeholder="类别" bindinput="inputField" data-field="category" value="{{category}}" />
+    <input class="input" placeholder="名称" bindinput="inputField" data-field="name" value="{{name}}" />
+    <input class="input" placeholder="系数" bindinput="inputField" data-field="coefficient" value="{{coefficient}}" />
+    <input class="input" placeholder="分子量" bindinput="inputField" data-field="molecular_weight" value="{{molecular_weight}}" />
+    <input class="input" placeholder="原料纯度" bindinput="inputField" data-field="raw_material_purity" value="{{raw_material_purity}}" />
+    <input class="input" placeholder="饱和蒸气压（0℃）" bindinput="inputField" data-field="saturated_vapor_pressure_0" value="{{saturated_vapor_pressure_0}}" />
+    <input class="input" placeholder="饱和蒸气压（10℃）" bindinput="inputField" data-field="saturated_vapor_pressure_10" value="{{saturated_vapor_pressure_10}}" />
+    <input class="input" placeholder="饱和蒸气压（20℃）" bindinput="inputField" data-field="saturated_vapor_pressure_20" value="{{saturated_vapor_pressure_20}}" />
+    <input class="input" placeholder="爆炸下限%" bindinput="inputField" data-field="explosion_lower_limit" value="{{explosion_lower_limit}}" />
+    <input class="input" placeholder="充装系数" bindinput="inputField" data-field="filling_coefficient" value="{{filling_coefficient}}" />
+    <input class="input" placeholder="密度（20℃）" bindinput="inputField" data-field="density" value="{{density}}" />
+    <input class="input" placeholder="沸点（℃）" bindinput="inputField" data-field="boiling_point" value="{{boiling_point}}" />
+    <input class="input" placeholder="爆炸上限%" bindinput="inputField" data-field="explosion_upper_limit" value="{{explosion_upper_limit}}" />
+
+    <button class="add-btn" bindtap="addOrUpdateChemical" disabled="{{isAddingOrUpdating}}">
+      {{isAddingOrUpdating ? '提交中...' : '提交新增/更新'}}
+    </button>
+
+    <button bindtap="downloadTable" class="add-btn" disabled="{{isDownloading}}">
+      {{isDownloading ? '预览中...' : '下载并预览表格'}}
+    </button>
+    
+  </view>
+</view>

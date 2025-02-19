@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "miniprogram/pages/login/login",
+    "miniprogram/pages/calculator/calculator",
+    "miniprogram/pages/addChemical/addChemical",
+    "miniprogram/pages/cost-accounting/cost-accounting"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "压力计算器",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "color": "#A2A9B0",
+    "selectedColor": "#07C160",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "miniprogram/pages/calculator/calculator",
+        "text": "计算压力"
+      },
+      {
+        "pagePath": "miniprogram/pages/cost-accounting/cost-accounting",
+        "text": "成本核算"
+      }
+    ]
+  }
+}

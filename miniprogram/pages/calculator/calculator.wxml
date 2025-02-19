@@ -1,0 +1,42 @@
+<view class="container">
+  <!-- 遍历所有成分 -->
+  <view wx:for="{{components}}" wx:key="index" class="component-container">
+    <view class="input-group">
+      <label class="input-label">成分名称:</label>
+      <input class="input" bindinput="inputComponentName" data-component-index="{{index}}" placeholder="输入成分名称" />
+      <label class="input-label">浓度:</label>
+      <view class="input-with-unit">
+        <input class="input" bindinput="inputConcentration" data-component-index="{{index}}" placeholder="输入浓度" type="number" />
+        <text class="unit">%</text>
+      </view>
+    </view>
+    <!-- 删除成分按钮，仅显示在最后一个成分后面 -->
+    <button wx:if="{{showDeleteButton && index === components.length - 1}}" class="remove-component-btn" bindtap="removeComponent">
+      <icon type="clear" size="30" /> 删除成分
+    </button>
+  </view>
+  <!-- 新增成分按钮 -->
+  <button class="add-component-btn" bindtap="addComponent">
+    <icon type="add" size="30" /> 新增成分
+  </button>
+  <!-- 计算压力按钮 -->
+  <button class="calculate-pressure-btn" bindtap="calculatePressure">
+    <icon type="search" size="30" /> 计算压力
+  </button>
+  <!-- 管理员新增页面按钮，仅显示给管理员 -->
+  <button wx:if="{{isAdmin}}" bindtap="handleAddPageAccess" class="add-page-button">
+    <icon type="addcircle" size="30" /> 管理员：新增页面
+  </button>
+  <!-- 显示计算出的压力 -->
+  <view wx:if="{{finalResults.length > 0}}" class="result-box">
+    <view class="result-item">
+      <text>0℃ MPa: {{finalResults[0][0]}}</text>
+    </view>
+    <view class="result-item">
+      <text>10℃ MPa: {{finalResults[0][1]}}</text>
+    </view>
+    <view class="result-item">
+      <text>20℃ MPa: {{finalResults[0][2]}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,178 @@
+/* 整体容器样式 */
+.container {
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* 使用更具体的选择器设置输入框组样式（卡片） */
+.component-container .input-group {
+  width: 90%;
+  max-width: 90vw;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 输入框标签样式 */
+.input-label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+/* 输入框样式 */
+.input {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background-color: transparent;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box; /* 新增：确保内边距和边框包含在宽度内 */
+}
+
+.input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+/* 按钮通用样式 */
+.add-component-btn,
+.remove-component-btn,
+.calculate-pressure-btn,
+.add-page-button {
+  width: 70%; /* 修改为占屏幕宽度的 70% */
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.add-component-btn icon,
+.remove-component-btn icon,
+.calculate-pressure-btn icon,
+.add-page-button icon {
+  margin-right: 10px;
+}
+
+/* 新增成分按钮 */
+.add-component-btn {
+  background-color: #2ecc71;
+}
+
+.add-component-btn:hover {
+  background-color: #27ae60;
+  transform: scale(1.02);
+}
+
+/* 删除成分按钮 */
+.remove-component-btn {
+  background-color: #e74c3c;
+}
+
+.remove-component-btn:hover {
+  background-color: #c0392b;
+  transform: scale(1.02);
+}
+
+/* 计算压力按钮 */
+.calculate-pressure-btn {
+  background-color: #3498db;
+}
+
+.calculate-pressure-btn:hover {
+  background-color: #2980b9;
+  transform: scale(1.02);
+}
+
+/* 新增页面按钮 */
+.add-page-button {
+  background-color: #f39c12;
+}
+
+.add-page-button:hover {
+  background-color: #e67e22;
+  transform: scale(1.02);
+}
+
+/* 结果显示框样式 */
+.result-box {
+  width: 90%;
+  max-width: 90vw;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-size: 18px;
+  animation: fadeIn 0.5s ease-out;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-box {
+  margin-top: 20px;
+}
+
+.result-item {
+  margin-bottom: 15px; /* 调整每个结果之间的垂直间距 */
+  font-size: 16px;
+}
+
+.input-with-unit {
+  display: flex;
+  align-items: center;
+  width: 100%; /* 新增：确保容器宽度为 100% */
+  box-sizing: border-box; /* 新增：确保内边距和边框包含在宽度内 */
+}
+
+.input-with-unit .input {
+  flex: 1;
+  min-width: 0; /* 确保在某些情况下输入框宽度能正常收缩 */
+  margin-right: 5px;
+  box-sizing: border-box; /* 新增：确保内边距和边框包含在宽度内 */
+}
+
+.input-with-unit .unit {
+  font-size: 16px;
+  color: #333;
+}

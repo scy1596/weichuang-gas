@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="logo-title">
+    <image src="{{logoSrc}}" mode="aspectFit" class="logo"></image>
+    <text class="title">压力计算器</text>
+  </view>
+  <view class="login-box">
+    <form bindsubmit="handleLogin">
+      <input name="username" placeholder="用户名" bindinput="bindUsername" />
+      <input name="password" placeholder="密码" type="password" bindinput="bindPassword" />
+      <button formType="submit" class="login-button" disabled="{{isLoggingIn}}">
+        {{isLoggingIn ? '登录中...' : '登录'}}
+      </button>
+    </form>
+  </view>
+</view>
