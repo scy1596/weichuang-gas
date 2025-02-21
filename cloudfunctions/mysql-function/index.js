@@ -253,3 +253,24 @@ async function getVaporPressure(payload) {
       return { code: 500, message: '服务器错误' };
   }
 }
+// 根据产品名称查询分子量
+async function getMolecularWeight(payload) {
+    const { productName } = payload;
+    try {
+        const [rows] = await queryWithRetry(
+            'SELECT molecular_weight FROM Gasmatching WHERE name =?',
+            [productName]
+        );
+
+        console.log('查询到的分子量数据:', rows); // 添加日志输出
+
+        if (rows.length > 0) {
+            return { code: 200, message: '查询成功', data: { molecular_weight: rows[0].molecular_weight } };
+        } else {
+            return { code: 404, message: '未找到对应产品的分子量信息' };
+        }
+    } catch (error) {
+        console.error('查询分子量出错:', error);
+        return { code: 500, message: '服务器错误' };
+    }
+}
