@@ -1,13 +1,23 @@
 <view class="container">
+  <!-- 用于粘贴文本的输入框textarea -->
+  <textarea class="paste-input" bindinput="handlePasteInput" placeholder="粘贴包含组分信息的文本"></textarea>
   <!-- 遍历所有成分 -->
   <view wx:for="{{components}}" wx:key="index" class="component-container">
     <view class="input-group">
-      <label class="input-label">成分名称:</label>
-      <input class="input" bindinput="inputComponentName" data-component-index="{{index}}" placeholder="输入成分名称" />
-      <label class="input-label">浓度:</label>
-      <view class="input-with-unit">
-        <input class="input" bindinput="inputConcentration" data-component-index="{{index}}" placeholder="输入浓度" type="number" />
-        <text class="unit">%</text>
+      <label class="input-label">成分名称: （限制：氮气，氩气，氦气等永久性气体为平衡气）</label>
+      <!-- 绑定成分名称输入框的 value 属性 -->
+      <input class="input" bindinput="inputComponentName" data-component-index="{{index}}" placeholder="输入成分名称" value="{{components[index].name}}" />
+      <label class="input-label">浓度:（请注意单位，并且浓度不管任何单位，换算下来必须为100%）</label>
+      <view class="concentration-group">
+        <!-- 绑定浓度输入框的 value 属性 -->
+        <input class="input concentration-input" bindinput="inputConcentration" data-component-index="{{index}}" placeholder="输入浓度" value="{{components[index].concentration}}" />
+        <picker bindchange="bindUnitChange" data-component-index="{{index}}" value="{{components[index].unitIndex}}" range="{{unitOptions}}">
+          <view class="unit-picker">{{unitOptions[components[index].unitIndex]}}</view>
+        </picker>
+      </view>
+      <!-- 仅在最后一个卡片显示自动补齐按钮，调整到浓度输入相关内容之后 -->
+      <view wx:if="{{index === components.length - 1}}">
+        <button bindtap="autoFillConcentration" class="auto-fill-btn">自动计算最后一种气的浓度</button>
       </view>
     </view>
     <!-- 删除成分按钮，仅显示在最后一个成分后面 -->
@@ -20,8 +30,12 @@
     <icon type="add" size="30" /> 新增成分
   </button>
   <!-- 计算压力按钮 -->
-  <button class="calculate-pressure-btn" bindtap="calculatePressure">
-    <icon type="search" size="30" /> 计算压力
+  <button 
+    class="calculate-pressure-btn {{buttonStatus === 'calculating' ? 'disabled' : (buttonStatus === 'completed' ? 'highlighted' : '')}}" 
+    bindtap="calculatePressure" 
+    disabled="{{buttonStatus === 'calculating'}}">
+    <icon type="search" size="30" /> 
+    {{buttonText}}
   </button>
   <!-- 管理员新增页面按钮，仅显示给管理员 -->
   <button wx:if="{{isAdmin}}" bindtap="handleAddPageAccess" class="add-page-button">
@@ -30,13 +44,18 @@
   <!-- 显示计算出的压力 -->
   <view wx:if="{{finalResults.length > 0}}" class="result-box">
     <view class="result-item">
-      <text>0℃ MPa: {{finalResults[0][0]}}</text>
+        <view class="result-label">0℃ MPa:</view>
+        <view class="result-value">{{finalResults[0][0]}}</view>
     </view>
     <view class="result-item">
-      <text>10℃ MPa: {{finalResults[0][1]}}</text>
+        <view class="result-label">10℃ MPa:</view>
+        <view class="result-value">{{finalResults[0][1]}}</view>
     </view>
     <view class="result-item">
-      <text>20℃ MPa: {{finalResults[0][2]}}</text>
+        <view class="result-label">20℃ MPa:</view>
+        <view class="result-value">{{finalResults[0][2]}}</view>
     </view>
   </view>
+  <!-- 登出按钮 -->
+  <button bindtap="handleLogout" style="border: 1px solid red;">退出登录</button>
 </view>
