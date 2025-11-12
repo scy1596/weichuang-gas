@@ -4,7 +4,7 @@ App({
   onLaunch: function () {
     // 初始化云开发环境
     if (!wx.cloud) {
-      console.error('当前微信版本不支持云开发功能');
+      console.error('当前微信版');
     } else {
       wx.cloud.init({
         env: 'weichuang-9gfoj56n60440bfb', // 这里填入你的云环境ID
